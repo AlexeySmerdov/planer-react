@@ -75,3 +75,4 @@ temp/
 # PWA
 sw.js
 workbox-*.js
+node_modules
