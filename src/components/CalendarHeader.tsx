@@ -7,13 +7,15 @@ interface CalendarHeaderProps {
   onViewChange: (view: 'dayGridMonth' | 'timeGridWeek' | 'timeGridDay') => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
+  onSettingsClick?: () => void;
 }
 
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   currentView,
   onViewChange,
   searchQuery,
-  onSearchChange
+  onSearchChange,
+  onSettingsClick
 }) => {
   return (
     <>
@@ -24,7 +26,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
           <p className="text-gray-500">Август 2024</p>
         </div>
         
-        <UserProfile />
+        <UserProfile onSettingsClick={onSettingsClick} />
       </div>
 
       {/* Calendar Controls Header */}

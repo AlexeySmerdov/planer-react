@@ -2,7 +2,11 @@ import React from 'react';
 import { Calendar, Home, Users, Clock, Settings } from 'lucide-react';
 import { UserProfile } from './UserProfile';
 
-export const MobileNavbar: React.FC = () => {
+interface MobileNavbarProps {
+  onSettingsClick?: () => void;
+}
+
+export const MobileNavbar: React.FC<MobileNavbarProps> = ({ onSettingsClick }) => {
   return (
     <>
       {/* Mobile Top Bar */}
@@ -17,7 +21,7 @@ export const MobileNavbar: React.FC = () => {
           </div>
 
           {/* User Profile */}
-          <UserProfile />
+          <UserProfile onSettingsClick={onSettingsClick} />
         </div>
       </div>
 
@@ -46,7 +50,10 @@ export const MobileNavbar: React.FC = () => {
             <span className="text-xs font-medium">Время</span>
           </button>
           
-          <button className="flex flex-col items-center gap-1 p-3 text-gray-500 hover:text-gray-700 transition-colors">
+          <button 
+            onClick={onSettingsClick}
+            className="flex flex-col items-center gap-1 p-3 text-gray-500 hover:text-gray-700 transition-colors"
+          >
             <Settings className="w-5 h-5" />
             <span className="text-xs font-medium">Настройки</span>
           </button>

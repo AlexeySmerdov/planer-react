@@ -2,7 +2,11 @@ import React from 'react';
 import { LogOut, Settings } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
-export const UserProfile: React.FC = () => {
+interface UserProfileProps {
+  onSettingsClick?: () => void;
+}
+
+export const UserProfile: React.FC<UserProfileProps> = ({ onSettingsClick }) => {
   const { currentUser, logout } = useAuth();
 
   const handleLogout = async () => {
@@ -20,14 +24,17 @@ export const UserProfile: React.FC = () => {
 
   return (
     <div className="flex items-center gap-4">
-      <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+      <button 
+        onClick={onSettingsClick}
+        className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+      >
         <Settings className="w-4 h-4 text-gray-500" />
       </button>
       
       <div className="relative group">
         <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full flex items-center justify-center cursor-pointer">
           <span className="text-white text-sm font-medium">
-            {getInitials(currentUser?.displayName)}
+            {getInitials(currentUser?.displayName || null)}
           </span>
         </div>
         

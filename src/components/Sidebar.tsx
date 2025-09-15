@@ -1,7 +1,11 @@
 import React from 'react';
 import { Calendar, Home, Users, Clock, Settings, MoreHorizontal } from 'lucide-react';
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onSettingsClick?: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ onSettingsClick }) => {
   return (
     <div className="hidden lg:block fixed left-0 top-0 w-20 h-full bg-white shadow-lg z-10">
       <div className="p-4">
@@ -22,9 +26,12 @@ export const Sidebar: React.FC = () => {
           <div className="w-12 h-12 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-xl cursor-pointer">
             <Clock className="w-4 h-4" />
           </div>
-          <div className="w-12 h-12 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-xl cursor-pointer">
+          <button 
+            onClick={onSettingsClick}
+            className="w-12 h-12 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-xl cursor-pointer"
+          >
             <Settings className="w-4 h-4" />
-          </div>
+          </button>
         </div>
       </div>
       

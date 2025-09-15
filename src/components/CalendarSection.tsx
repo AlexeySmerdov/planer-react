@@ -11,6 +11,7 @@ interface CalendarSectionProps {
   events: Event[];
   onEventClick: (clickInfo: any) => void;
   onDateSelect: (selectInfo: any) => void;
+  onSettingsClick?: () => void;
 }
 
 export const CalendarSection: React.FC<CalendarSectionProps> = ({
@@ -20,7 +21,8 @@ export const CalendarSection: React.FC<CalendarSectionProps> = ({
   onSearchChange,
   events,
   onEventClick,
-  onDateSelect
+  onDateSelect,
+  onSettingsClick
 }) => {
   return (
     <>
@@ -29,6 +31,7 @@ export const CalendarSection: React.FC<CalendarSectionProps> = ({
         onViewChange={onViewChange}
         searchQuery={searchQuery}
         onSearchChange={onSearchChange}
+        onSettingsClick={onSettingsClick}
       />
 
       <CalendarWidget

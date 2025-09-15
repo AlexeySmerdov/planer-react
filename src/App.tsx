@@ -12,6 +12,7 @@ import { FloatingActionButton } from './components/FloatingActionButton';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { LoadingState } from './components/LoadingState';
 import { ErrorState } from './components/ErrorState';
+import { SettingsPage } from './components/SettingsPage';
 
 function App() {
   const { currentUser, loading: authLoading } = useAuth();
@@ -39,6 +40,8 @@ function App() {
     notification,
     setNotification
   } = useAppState();
+
+  const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
 
   const { events, loading, error } = useEvents(currentUser?.uid);
 
@@ -92,8 +95,13 @@ function App() {
   const todayEvents = getTodayEvents(events);
   const upcomingEvents = getUpcomingEvents(events);
 
+  // Show settings page if open
+  if (isSettingsOpen) {
+    return <SettingsPage onBack={() => setIsSettingsOpen(false)} />;
+  }
+
   return (
-    <AppLayout>
+    <AppLayout onSettingsClick={() => setIsSettingsOpen(true)}>
       <CalendarSection
         currentView={currentView}
         onViewChange={setCurrentView}
@@ -102,6 +110,7 @@ function App() {
         events={events}
         onEventClick={handleEventClick}
         onDateSelect={handleDateSelect}
+        onSettingsClick={() => setIsSettingsOpen(true)}
       />
 
       <EventsSection
