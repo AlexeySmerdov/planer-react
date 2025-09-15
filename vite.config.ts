@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'pwa-*.png', 'browserconfig.xml'],
       manifest: {
         name: 'Планировщик - Календарь событий',
         short_name: 'Планировщик',
@@ -27,6 +27,30 @@ export default defineConfig({
         },
         icons: [
           {
+            src: 'pwa-144x144.png',
+            sizes: '144x144',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-144x144.png',
+            sizes: '144x144',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: 'pwa-152x152.png',
+            sizes: '152x152',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-180x180.png',
+            sizes: '180x180',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
             src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
@@ -35,6 +59,18 @@ export default defineConfig({
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: 'pwa-384x384.png',
+            sizes: '384x384',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-384x384.png',
+            sizes: '384x384',
             type: 'image/png',
             purpose: 'maskable'
           },
