@@ -8,6 +8,10 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true,
+        type: 'module'
+      },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'pwa-*.png', 'browserconfig.xml'],
       manifest: {
         name: 'Планировщик - Календарь событий',
@@ -16,12 +20,12 @@ export default defineConfig({
         theme_color: '#6366f1',
         background_color: '#ffffff',
         display: 'standalone',
-        orientation: 'any',
+        orientation: 'portrait-primary',
         start_url: '/',
         scope: '/',
         categories: ['productivity', 'utilities'],
         lang: 'ru',
-        display_override: ['window-controls-overlay', 'standalone'],
+        display_override: ['standalone', 'minimal-ui'],
         launch_handler: {
           client_mode: 'navigate-existing'
         },
